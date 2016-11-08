@@ -11,6 +11,10 @@ blogApp.config(['$routeProvider', '$locationProvider',
     when('/', {
       templateUrl: 'main.html',
       controller: 'BlogController'
+    })
+    .when('/blogPost/:id', {
+      templateUrl: 'partials/blogPost.html',
+      controller: 'BlogViewController'
     });
 
     $locationProvider.html5Mode(false).hashPrefix('!');
