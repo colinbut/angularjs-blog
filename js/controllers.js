@@ -34,3 +34,20 @@ blogControllers.controller('BlogViewController', ['$scope', '$routeParams','Blog
     );
 
   }]);
+
+blogControllers.controller('NewBlogController',
+  ['$scope', 'checkCredentials', '$location', '$http', 'getToken',
+    function NewBlogController($scope, checkCredentials, $location, $http, getToken) {
+      $http.defaults.headers.common['Authorization'] = 'Basic ' + getToken();
+
+      Blog.save({},
+        function success(response) {
+          console.log("Success:" + JSON.stringify(response));
+          $scope.status = response;
+        },
+        function error(errorResponse) {
+          console.log("Error:" + JSON.stringify(errorResponse));
+        }
+      );
+    }
+  ])
