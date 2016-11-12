@@ -8,7 +8,7 @@ blogServices.factory('BlogList', ['$resource',
   }
 ]);
 
-blogServices.factory('blogPost', ['$resource',
+blogServices.factory('BlogPost', ['$resource',
   function($resource) {
     return $resource("http://localhost/rs/blogPost", {} {
       get: {method: 'GET', cache: false, isArray: false},
