@@ -1,5 +1,13 @@
 var blogServices = angular.module('blogServices', ['ngResource']);
 
+blogServices.factory('BlogList', ['$resource',
+  function($resource) {
+    return $resource("http://localhost/rs/blogList", {}, {
+      get: {method: 'GET', cache: false, isArray: true}
+    });
+  }
+]);
+
 blogServices.factory('blogPost', ['$resource',
   function($resource) {
     return $resource("http://localhost/rs/blogPost", {} {
