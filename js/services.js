@@ -1,5 +1,12 @@
 var blogServices = angular.module('blogServices', ['ngResource']);
 
+blogServices.factory('Login', ['$resource',
+  function($resource) {
+    return $resource("http://localhost/rs/login", {}, {
+      login: {method: 'POST', cache: false, isArray: false}
+    });
+  }]);
+
 blogServices.factory('BlogList', ['$resource',
   function($resource) {
     return $resource("http://localhost/rs/blogList", {}, {
