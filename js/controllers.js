@@ -95,3 +95,9 @@ blogControllers.controller('LoginController',
         }
     };
   ]);
+
+blogControllers.controller('LogoutController', ['$location', 'deleteCredentials',
+  function LogoutController($location, deleteCredentials) {
+    deleteCredentials();
+    $location.path('/login');
+  }]);
