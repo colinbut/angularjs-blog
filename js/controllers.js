@@ -50,4 +50,37 @@ blogControllers.controller('NewBlogController',
         }
       );
     }
-  ])
+  ]);
+
+blogControllers.controller('LoginController',
+  ['$scope', '$location', 'Login', 'setCredentials',
+    function LoginController($scope, $location, Login, setCredentials) {
+        $scope.submit = function() {
+          $scope.sub = true;
+
+          // build post data
+          var postData = {
+            "username" : $scope.username,
+            "password" : $scope.password
+          };
+
+          // make backend REST call & attach callback functions
+          Login.login({}, postData,
+            function success(response) {
+              console.log("Success:" + JSON.stringify(response));
+
+              if (response.authenticated) {
+                setCredentials($scope.username, $scope.password);
+                $location.path('/');
+              } else {
+                $scope.error = "Login Failed";
+              }
+
+            },
+            function error(errorResponse) {
+              console.log("Error:" + JSON.stringify(errorResponse));
+            }
+          );
+        }
+    };
+  ]);
