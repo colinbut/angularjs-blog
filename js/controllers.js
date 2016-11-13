@@ -3,8 +3,13 @@
 var blogControllers = angular.module('blogControllers', []);
 
 // a Controller for managing the blog list
-blogControllers.controller('BlogController', ['$scope','BlogList'
-  function BlogController($scope, BlogList) {
+blogControllers.controller('BlogController', ['$scope','BlogList', '$location', 'checkCredentials'
+  function BlogController($scope, BlogList, $location, checkCredentials) {
+
+      // if not logged in then redirect to login page
+      if (!checkCredentials()) {
+        $location.path('/login');
+      }
 
       BlogList.get({},
         function success(errorResponse) {
@@ -19,8 +24,14 @@ blogControllers.controller('BlogController', ['$scope','BlogList'
   }]);
 
 // a Controller for managing the display of specific/particular blog posts
-blogControllers.controller('BlogViewController', ['$scope', '$routeParams','BlogPost'
-  function BlogViewController($scope, $routeParams, BlogPost) {
+blogControllers.controller('BlogViewController', ['$scope', '$routeParams','BlogPost', '$location', 'checkCredentials'
+  function BlogViewController($scope, $routeParams, BlogPost, $location, checkCredentials) {
+
+    // if not logged in then redirect to login page
+    if (!checkCredentials()) {
+      $location.path('/login');
+    }
+
     var blogId = $routeParams.id;
 
     BlogPost.get({id: blogId},
