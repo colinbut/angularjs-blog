@@ -19,5 +19,21 @@
         {{comment.commentText}}
       </div>
     </div>
+
+    <div class="blog-comment-entry-wrapper">
+      <form class="" ng-submit="submit()" ng-controller="BlogViewController">
+        <input type="hidden" ng-model="blogId"/>
+        <div class="blog-post-entry-label">
+          <label for="commentText">New Comment:</label>
+        </div>
+        <div class="blog-post-entry-element">
+          <textarea class="blog-post-textarea" type="text" ng-model="commentText" name="commentText" placeholder="Comment" required/>
+        </div>
+        <div class="blog-post-button">
+          <button type="submit" class="form-button">Submit</button>
+        </div>
+      </form>
+    </div>
+
   </div>
 </div>
