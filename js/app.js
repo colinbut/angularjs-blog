@@ -8,6 +8,7 @@ var blogApp = angular.module('blogApp', [
   'blogDirectives'
 ]);
 
+// list of routes configuration
 blogApp.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
@@ -18,6 +19,14 @@ blogApp.config(['$routeProvider', '$locationProvider',
     .when('/blogPost/:id', {
       templateUrl: 'partials/blogPost.html',
       controller: 'BlogViewController'
+    })
+    .when('/newBlogPost', {
+      templateUrl: 'partials/newPost.html',
+      controller: 'NewBlogController'
+    })
+    .when('/about', {
+      templateUrl: 'partials/about.html',
+      controller: 'AboutBlogController'
     })
     .when('/login', {
       templateUrl: 'partials/login.html',
