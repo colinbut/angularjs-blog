@@ -13,7 +13,7 @@ blogApp.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
     when('/', {
-      templateUrl: 'main.html',
+      templateUrl: 'partials/main.html',
       controller: 'BlogController'
     })
     .when('/blogPost/:id', {
