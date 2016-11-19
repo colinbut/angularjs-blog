@@ -156,3 +156,11 @@ blogControllers.controller('LogoutController', ['$location', 'deleteCredentials'
     deleteCredentials();
     $location.path('/login');
   }]);
+
+blogControllers.controller('AboutBlogController', ['$scope', '$location', 'checkCredentials',
+  function AboutBlogController($scope, $location, checkCredentials) {
+    if (!checkCredentials()) {
+      $location.path('/login');
+    }
+    $scope.aboutActiveClass = "active";
+    }]);
