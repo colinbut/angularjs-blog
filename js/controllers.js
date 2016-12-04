@@ -3,7 +3,7 @@
 var blogControllers = angular.module('blogControllers', []);
 
 // a Controller for managing the blog list
-blogControllers.controller('BlogController', ['$scope','BlogList', '$location', 'checkCredentials'
+blogControllers.controller('BlogController', ['$scope','BlogList', '$location', 'checkCredentials',
   function BlogController($scope, BlogList, $location, checkCredentials) {
 
       // if not logged in then redirect to login page
