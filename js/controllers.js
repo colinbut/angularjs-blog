@@ -15,11 +15,11 @@ blogControllers.controller('BlogController', ['$scope','BlogList', '$location', 
       $scope.blogList = [];
 
       BlogList.get({},
-        function success(errorResponse) {
+        function success(response) {
           console.log("Success:" + JSON.stringify(response));
           $scope.blogList = response;
         },
-        function error(response) {
+        function error(errorResponse) {
           console.log("Error:" + JSON.stringify(errorResponse));
         }
       );
